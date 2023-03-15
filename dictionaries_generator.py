@@ -50,6 +50,39 @@ def generate_binary_numbers_list(length: int):
 
     return binary_numbers_list
 
+def generate_binary_numbers_dictionaries(attributes: list):
+    """
+    >>> levels = list(range(10))
+    >>> schools = ["abjuration", "conjuration", "divination", "enchantment", "evocation",\
+                   "illusion", "necromancy", "transmutation"]
+    >>> types = ["acid", "bludgeoning", "cold", "damage", "extra", "fire", "force",\
+                 "lightning", "necrotic", "nonmagical", "force", "poison",\
+                 "psychic", "radiant", "slashing", "thunder"]
+    >>> areas = ["circle", "cone/sphere", "cone", "cube", "cylinder", "line",\
+                 "multiple targets/sphere", "multiple targes", "none",\
+                 "single target/cone", "single target", "sphere/cylinder", "sphere", \
+                 "square", "wall"]
+    >>> ranges = ["10 feet radius", "100 feet line", "15 feet cone", "15 feet cube",\
+                  "15 feet radius", "30 feet cone", "30 feet line", "30 feet radius",\
+                  "5 feet radius", "60 feet cone", "60 feet line", "point (150 feet)",\
+                  "point (30 feet)", "point (300 feet)", "point (5 feet)", "point (500 feet)",\
+                  "point (60 feet)", "point (90 feet)", "self", "sight", "special", "touch"]
+    >>> attributes = [levels, schools, types, areas, ranges]
+    >>> binary_numbers_dictionaries = generate_binary_numbers_dictionaries(attributes)
+    >>> len(binary_numbers_dictionaries)
+    5
+    >>> len(binary_numbers_dictionaries[0])
+    10
+    >>> len(binary_numbers_dictionaries[0][0])
+    11
+    >>> binary_numbers_dictionaries[1]
+    {'abjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 'conjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], 'divination': [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], 'enchantment': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1], 'evocation': [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1], 'illusion': [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1], 'necromancy': [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1], 'transmutation': [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]}
+    """
+    binary_numbers_list = generate_binary_numbers_list(len(attributes)*2+1)
+    binary_numbers_dictionaries = [dict(zip(attribute, binary_numbers_list[1:]))
+                                   for attribute in attributes]
+    return binary_numbers_dictionaries
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
