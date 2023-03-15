@@ -76,7 +76,14 @@ def generate_binary_numbers_dictionaries(attributes: list):
     >>> len(binary_numbers_dictionaries[0][0])
     11
     >>> binary_numbers_dictionaries[1]
-    {'abjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 'conjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], 'divination': [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], 'enchantment': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1], 'evocation': [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1], 'illusion': [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1], 'necromancy': [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1], 'transmutation': [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]}
+    {'abjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], \
+'conjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], \
+'divination': [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], \
+'enchantment': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1], \
+'evocation': [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1], \
+'illusion': [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1], \
+'necromancy': [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1], \
+'transmutation': [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]}
     """
     binary_numbers_list = generate_binary_numbers_list(len(attributes)*2+1)
     binary_numbers_dictionaries = [dict(zip(attribute, binary_numbers_list[1:]))
