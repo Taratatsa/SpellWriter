@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 """
-This module allows the writing of spells as described in Gorilla of Destiny's spell writing guide.
+This module allows the writing of spells as described in The Gorilla of Destiny's
+Spell Writing System, detailed in his Spell Writing Guide.
+
+Reference : https://www.drivethrurpg.com/product_info.php?products_id=429711
 """
 
 __author__ = 'Jules "Taratatsa" Lelay'
