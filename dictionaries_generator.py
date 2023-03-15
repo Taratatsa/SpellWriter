@@ -52,6 +52,18 @@ def generate_binary_numbers_list(length: int):
 
 def generate_binary_numbers_dictionaries(attributes: list):
     """
+    Generate a list of binary numbers dictionaries associated with the defined attributes.
+
+    Parameters
+    ----------
+    attributes : list
+        attributes to associate with binary numbers.
+
+    Returns
+    -------
+    binary_numbers_dictionaries : list
+        list of binary numbers dictionaries associated with the attributes.
+
     >>> levels = list(range(10))
     >>> schools = ["abjuration", "conjuration", "divination", "enchantment", "evocation",\
                    "illusion", "necromancy", "transmutation"]
