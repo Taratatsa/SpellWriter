@@ -16,3 +16,28 @@ __version__ = "0.0.1"
 __maintainer__ = 'Jules "Taratatsa" Lelay'
 __email__ = "jules.lilaille@gmail.com"
 __status__ = "Development"
+
+def main():
+    """
+    Ask for spell and writing details before prompting the written spell
+
+    Returns
+    -------
+    None.
+
+    """
+    name = input("Input your spell's name: ").capitalize()
+    input_level = input("Input your spell's level: ")
+    input_school = input("Input your spell's school: ").capitalize()
+    input_type = input("Input your spell's damage type (\"none\" if irrelevant): ").capitalize()
+    input_area = input("Input your spell's area type (\"none\" if irrelevant): ").capitalize()
+    input_range = input("Input your spell's range (\"none\" if irrelevant): ").capitalize()
+
+    try:
+        level = int(input_level)
+    except ValueError:
+        print("Format error in level: Please state an integer")
+        return
+
+if __name__ == "__main__":
+    main()
