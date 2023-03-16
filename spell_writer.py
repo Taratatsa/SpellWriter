@@ -6,7 +6,10 @@ Spell Writing System, detailed in his Spell Writing Guide.
 Reference : https://www.drivethrurpg.com/product_info.php?products_id=429711
 """
 
+import matplotlib.colors as mcolors
+import matplotlib.pyplot as plt
 from dictionaries_generator import generate_binary_numbers_dictionaries
+from spell_templates import templates
 
 __author__ = 'Jules "Taratatsa" Lelay'
 __copyright__ = "None"
@@ -136,6 +139,27 @@ def get_binary_numbers(level: str, school: str, damage: str, area: str, reach: s
 
     return binary_numbers
 
+def write_spell(name: str, binary_numbers: list, template: str, mode: str):
+    try:
+        coordinates, function = templates[template](length)
+    except KeyError:
+        print("Unknown template")
+        return
+
+    fig, axs = plt.subplots(1, 1)
+    axs.scatter(*zip(*coordinates), color="white", edgecolors="black")
+    k=1
+    for binary_number in binary_numbers:
+        for i in range(length):
+            if binary_number[i] == 1:
+                color = "black" if mode=="bw" else list(mcolors.TABLEAU_COLORS.keys())[k-1]
+                function(coordinates[i], coordinates[(i+k)%length], color)
+        k+=1
+    axs.set_aspect('equal', 'box')
+    axs.set_title(name, fontsize=14, pad=10)
+    plt.axis('off')
+    plt.show()
+
 def main():
     """
     Ask for spell attributes and writing details before prompting the written spell.
@@ -145,15 +169,18 @@ def main():
     None.
 
     """
+    template = input("Input the template you would like to use (custom if irrelevant): ").lower()
     name = input("Input your spell's name: ").capitalize()
     input_level = input("Input your spell's level: ")
     input_school = input("Input your spell's school: ").lower()
     input_damage = input("Input your spell's damage type (\"none\" if irrelevant): ").lower()
     input_area = input("Input your spell's area type (\"none\" if irrelevant): ").lower()
     input_range = input("Input your spell's range (\"none\" if irrelevant): ").lower()
+    mode = input("Input your writing mode (\"bw\" or colors): ").lower()
 
     bins = get_binary_numbers(input_level, input_school, input_damage, input_area, input_range)
 
+    write_spell(name, bins, template, mode)
 
 if __name__ == "__main__":
     main()
