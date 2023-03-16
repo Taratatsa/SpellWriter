@@ -113,16 +113,28 @@ def get_binary_numbers(level: str, school: str, damage: str, area: str, reach: s
     bin_range : list
         The binary number associated with the spell range as a list.
 
+    >>> get_binary_numbers("0", "none", "none", "none", "none")
+    [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    >>> get_binary_numbers("0", "1", "0", "1", "0")
+    [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
     """
     binary_numbers_dictionaries = generate_binary_numbers_dictionaries(attributes)
 
-    bin_level = binary_numbers_dictionaries[0][level]
-    bin_school = binary_numbers_dictionaries[1][school]
-    bin_type = binary_numbers_dictionaries[2][damage]
-    bin_area = binary_numbers_dictionaries[3][area]
-    bin_range = binary_numbers_dictionaries[4][reach]
+    binary_numbers = []
+    entries = [level, school, damage, area, reach]
+    for attribute in entries:
+        try:
+            index = entries.index(attribute)
+            binary_numbers.append(binary_numbers_dictionaries[index][attribute])
+        except KeyError:
+            print(attribute + " not recognized, defaulting to none.")
+            binary_numbers.append(binary_numbers_dictionaries[index]["none"])
 
-    return bin_level, bin_school, bin_type, bin_area, bin_range
+    return binary_numbers
 
 def main():
     """
@@ -133,19 +145,14 @@ def main():
     None.
 
     """
-    name = input("Input your spell's name: ").lower()
+    name = input("Input your spell's name: ").capitalize()
     input_level = input("Input your spell's level: ")
     input_school = input("Input your spell's school: ").lower()
     input_damage = input("Input your spell's damage type (\"none\" if irrelevant): ").lower()
     input_area = input("Input your spell's area type (\"none\" if irrelevant): ").lower()
     input_range = input("Input your spell's range (\"none\" if irrelevant): ").lower()
 
-    try:
-        level = int(input_level)
-    except ValueError:
-        print("Format error in level: Please state an integer")
-        return
-    bins = get_binary_numbers(level, input_school, input_damage, input_area, input_range)
+    bins = get_binary_numbers(input_level, input_school, input_damage, input_area, input_range)
 
 
 if __name__ == "__main__":
