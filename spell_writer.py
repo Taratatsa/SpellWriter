@@ -118,12 +118,12 @@ def main():
     None.
 
     """
-    name = input("Input your spell's name: ").capitalize()
+    name = input("Input your spell's name: ").lower()
     input_level = input("Input your spell's level: ")
-    input_school = input("Input your spell's school: ").capitalize()
-    input_type = input("Input your spell's damage type (\"none\" if irrelevant): ").capitalize()
-    input_area = input("Input your spell's area type (\"none\" if irrelevant): ").capitalize()
-    input_range = input("Input your spell's range (\"none\" if irrelevant): ").capitalize()
+    input_school = input("Input your spell's school: ").lower()
+    input_damage = input("Input your spell's damage type (\"none\" if irrelevant): ").lower()
+    input_area = input("Input your spell's area type (\"none\" if irrelevant): ").lower()
+    input_range = input("Input your spell's range (\"none\" if irrelevant): ").lower()
 
     try:
         level = int(input_level)
