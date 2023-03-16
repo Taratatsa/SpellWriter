@@ -111,7 +111,7 @@ def get_binary_numbers(level: int, school: str, damage: str, area: str, reach: s
 
 def main():
     """
-    Ask for spell and writing details before prompting the written spell
+    Ask for spell attributes and writing details before prompting the written spell.
 
     Returns
     -------
