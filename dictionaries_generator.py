@@ -3,6 +3,9 @@
 This module generates the necessary sets for the main spell writer module.
 """
 
+from copy import deepcopy
+import itertools
+
 __author__ = 'Jules "Taratatsa" Lelay'
 __copyright__ = "None"
 __credits__ = ["Gorilla of Destiny"]
@@ -13,9 +16,6 @@ __version__ = "0.0.1"
 __maintainer__ = 'Jules "Taratatsa" Lelay'
 __email__ = "jules.lilaille@gmail.com"
 __status__ = "Development"
-
-from copy import deepcopy
-import itertools
 
 def generate_binary_numbers_list(length: int):
     """
