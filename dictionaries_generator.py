@@ -79,16 +79,17 @@ def generate_binary_numbers_dictionaries(attributes: list):
                   "5 feet radius", "60 feet cone", "60 feet line", "point (150 feet)",\
                   "point (30 feet)", "point (300 feet)", "point (5 feet)", "point (500 feet)",\
                   "point (60 feet)", "point (90 feet)", "self", "sight", "special", "touch"]
-    >>> attributes = [levels, schools, types, areas, ranges]
+    >>> attributes = [["none"]+levels, ["none"]+schools, ["none"]+types, ["none"]+areas, ["none"]+ranges]
     >>> binary_numbers_dictionaries = generate_binary_numbers_dictionaries(attributes)
     >>> len(binary_numbers_dictionaries)
     5
     >>> len(binary_numbers_dictionaries[0])
-    10
+    11
     >>> len(binary_numbers_dictionaries[0][0])
     11
     >>> binary_numbers_dictionaries[1]
-    {'abjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], \
+    {'none': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \
+'abjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], \
 'conjuration': [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], \
 'divination': [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], \
 'enchantment': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1], \
@@ -98,7 +99,7 @@ def generate_binary_numbers_dictionaries(attributes: list):
 'transmutation': [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]}
     """
     binary_numbers_list = generate_binary_numbers_list(len(attributes)*2+1)
-    binary_numbers_dictionaries = [dict(zip(attribute, binary_numbers_list[1:]))
+    binary_numbers_dictionaries = [dict(zip(attribute, binary_numbers_list))
                                    for attribute in attributes]
     return binary_numbers_dictionaries
 
