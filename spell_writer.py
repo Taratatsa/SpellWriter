@@ -19,7 +19,7 @@ __maintainer__ = 'Jules "Taratatsa" Lelay'
 __email__ = "jules.lilaille@gmail.com"
 __status__ = "Development"
 
-levels = list(range(10))
+levels = [str(i) for i in range(10)]
 schools = ["abjuration",
            "conjuration",
            "divination",
@@ -58,17 +58,32 @@ areas = ["circle",
          "sphere",
          "square",
          "wall"]
-ranges = ["10 feet radius", "100 feet line", "15 feet cone", "15 feet cube", "15 feet radius",
-          "30 feet cone", "30 feet line", "30 feet radius", "5 feet radius", "60 feet cone",
-          "60 feet line", "point (150 feet)", "point (30 feet)", "point (300 feet)",
-          "point (5 feet)", "point (500 feet)", "point (60 feet)", "point (90 feet)", "self",
-          "sight", "special", "touch"]
-attributes = [levels, schools, types, areas, ranges]
+ranges = ["10 feet radius",
+          "100 feet line",
+          "15 feet cone",
+          "15 feet cube",
+          "15 feet radius",
+          "30 feet cone",
+          "30 feet line", 
+          "30 feet radius",
+          "5 feet radius",
+          "60 feet cone",
+          "60 feet line",
+          "point (150 feet)",
+          "point (30 feet)",
+          "point (300 feet)",
+          "point (5 feet)",
+          "point (500 feet)",
+          "point (60 feet)",
+          "point (90 feet)",
+          "self",
+          "sight",
+          "special",
+          "touch"]
+attributes = [["none"]+levels, ["none"]+schools, ["none"]+types, ["none"]+areas, ["none"]+ranges]
+length = len(attributes)*2+1
 
-length = (len(attributes)+1)
-none = [0]*length
-
-def get_binary_numbers(level: int, school: str, damage: str, area: str, reach: str):
+def get_binary_numbers(level: str, school: str, damage: str, area: str, reach: str):
     """
     Generate the binary numbers required to draw the spell as lists from the spell attributes.
 
