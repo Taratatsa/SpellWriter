@@ -65,6 +65,50 @@ ranges = ["10 feet radius", "100 feet line", "15 feet cone", "15 feet cube", "15
           "sight", "special", "touch"]
 attributes = [levels, schools, types, areas, ranges]
 
+length = (len(attributes)+1)
+none = [0]*length
+
+def get_binary_numbers(level: int, school: str, damage: str, area: str, reach: str):
+    """
+    Generate the binary numbers required to draw the spell as lists from the spell attributes.
+
+    Parameters
+    ----------
+    level : int
+        Spell level.
+    school : str
+        Spell school.
+    damage : str
+        damage type.
+    area : str
+        Spell area of effect.
+    reach : str
+        Spell range.
+
+    Returns
+    -------
+    bin_level : list
+        The binary number associated with the spell level as a list.
+    bin_school : list
+        The binary number associated with the spell school as a list.
+    bin_type : list
+        The binary number associated with the spell damage type as a list.
+    bin_area : list
+        The binary number associated with the spell area of effect as a list.
+    bin_range : list
+        The binary number associated with the spell range as a list.
+
+    """
+    binary_numbers_dictionaries = generate_binary_numbers_dictionaries(attributes)
+
+    bin_level = binary_numbers_dictionaries[0][level]
+    bin_school = binary_numbers_dictionaries[1][school]
+    bin_type = binary_numbers_dictionaries[2][damage]
+    bin_area = binary_numbers_dictionaries[3][area]
+    bin_range = binary_numbers_dictionaries[4][reach]
+
+    return bin_level, bin_school, bin_type, bin_area, bin_range
+
 def main():
     """
     Ask for spell and writing details before prompting the written spell
@@ -86,15 +130,8 @@ def main():
     except ValueError:
         print("Format error in level: Please state an integer")
         return
+    bins = get_binary_numbers(level, input_school, input_damage, input_area, input_range)
 
-    none = [0]*(len(attributes)+1)
-    binary_numbers_dictionaries = generate_binary_numbers_dictionaries(attributes)
-
-    bin_level = binary_numbers_dictionaries[0][level]
-    bin_school = binary_numbers_dictionaries[1][input_school]
-    bin_type = binary_numbers_dictionaries[2][input_type]
-    bin_area = binary_numbers_dictionaries[3][input_area]
-    bin_range = binary_numbers_dictionaries[4][input_range]
 
 if __name__ == "__main__":
     main()
