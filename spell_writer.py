@@ -139,7 +139,7 @@ def get_binary_numbers(level: str, school: str, damage: str, area: str, reach: s
 
     return binary_numbers
 
-def write_spell(name: str, binary_numbers: list, template: str, mode: str):
+def write_spell(name: str, binary_numbers: list, template: str, mode: str, extensive: bool):
     try:
         coordinates, function = templates[template](length)
     except KeyError:
@@ -147,7 +147,8 @@ def write_spell(name: str, binary_numbers: list, template: str, mode: str):
         return
 
     fig, axs = plt.subplots(1, 1)
-    axs.scatter(*zip(*coordinates), color="white", edgecolors="black")
+    if(extensive):
+        axs.scatter(*zip(*coordinates), color="white", edgecolors="black")
     k=1
     for binary_number in binary_numbers:
         for i in range(length):
@@ -177,10 +178,11 @@ def main():
     input_area = input("Input your spell's area type (\"none\" if irrelevant): ").lower()
     input_range = input("Input your spell's range (\"none\" if irrelevant): ").lower()
     mode = input("Input your writing mode (\"bw\" or colors): ").lower()
+    extensive = input("Show points ? (y/n): ").lower()
 
     bins = get_binary_numbers(input_level, input_school, input_damage, input_area, input_range)
 
-    write_spell(name, bins, template, mode)
+    write_spell(name, bins, template, mode, extensive=="y")
 
 if __name__ == "__main__":
     main()
